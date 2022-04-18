@@ -42,6 +42,7 @@ public class AdminMasterServiceImpl implements AdminMasterService {
     @Override
     public boolean update(AdminReqDto adminReqDto) {
         AdminMaster adminMaster=new AdminMaster();
+        adminMaster.setDateCreated(adminReqDto.getCreatedAt());
         adminMaster.setAdminId(adminReqDto.getAdminId());
         BeanUtils.copyProperties(adminReqDto,adminMaster);
         try {

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "admin_Master")
-public class AdminMaster {
+public class AdminMaster extends BaseModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
