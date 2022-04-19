@@ -50,7 +50,7 @@ public class AboutUsServiceImpl implements AboutUsService {
         AboutUsMaster aboutUsMaster=new AboutUsMaster();
         try {
             Optional<AboutUsMaster> aboutUsMaster1=aboutUsDao.findById(aboutUsId);
-            aboutUsMaster1.ifPresent(settingMaster -> BeanUtils.copyProperties(settingMaster, aboutUsMaster));
+            aboutUsMaster1.ifPresent(settingMaster -> BeanUtils.copyProperties( settingMaster, aboutUsMaster));
             return aboutUsMaster;
         }
         catch (Exception e) {

@@ -11,7 +11,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-public interface AdminMasterService {
+public interface  AdminMasterService {
     boolean create(AdminReqDto adminReqDto);
 
     boolean update(AdminReqDto adminReqDto);

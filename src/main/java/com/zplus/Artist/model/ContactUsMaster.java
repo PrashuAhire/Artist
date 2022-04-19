@@ -5,7 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter@Setter@Entity
+@Getter
+@Setter
+@Entity
 @Table(name = "contact_us_master")
 public class ContactUsMaster extends BaseModel{
 
