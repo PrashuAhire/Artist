@@ -15,4 +15,6 @@ public interface AboutUsService {
     List getAllAboutUs();
 
     List activeAboutUs();
+
+
 }
