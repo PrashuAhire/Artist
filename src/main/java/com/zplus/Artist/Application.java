@@ -8,6 +8,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+
 import java.util.TimeZone;
 @SpringBootApplication(scanBasePackages = "com.zplus.Artist")
 @EnableSwagger2
