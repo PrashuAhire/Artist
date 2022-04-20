@@ -1,5 +1,6 @@
 package com.zplus.Artist.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,6 +34,7 @@ public class CustomerMaster extends BaseModel{
 
     @Column(length = 50)
     @NotNull
+    @JsonIgnore
     private String password;
 
     @Column(length = 4)

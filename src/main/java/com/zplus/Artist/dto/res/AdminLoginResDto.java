@@ -1,5 +1,6 @@
 package com.zplus.Artist.dto.res;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ public class AdminLoginResDto {
     private String emailId;
     private String address;
     private String status;
+    @JsonIgnore
     private String password;
     private Integer responseCode;
 
