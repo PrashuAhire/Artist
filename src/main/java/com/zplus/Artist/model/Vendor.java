@@ -21,9 +21,9 @@ public class Vendor {
     private String vendorMiddleName;
     @Column(length = 20)
     private String vendorLastName;
-    @Column(length = 50)
+    @Column(length = 50,nullable = false,unique = true)
     private String vendorEmail;
-    @Column(length = 20)
+    @Column(length = 20 ,nullable = false,unique = true)
     private String vendorMoblieNo;
     @Column(length = 15)
     private String vendorPassword;
@@ -45,7 +45,7 @@ public class Vendor {
     @Column(length = 100)
     private String amountBalance;
     @Column(length = 8)
-    private Integer Oto;
+    private Integer Otp;
 
     private String photo;
 
