@@ -82,19 +82,21 @@ public class VendorController {
         VendorForgotPasswordResDto vendorForgotPasswordResDto = vendorService.forgotPassword(vendorForgotPasswordReqDto);
         return new ResponseEntity(vendorForgotPasswordResDto, HttpStatus.OK);
     }
+
     @PostMapping(value = "/validateotp")
 public  ResponseEntity validateOtp(@RequestBody VendorValidateOtpReqDto vendorValidateOtpReqDto){
     VendorForgotPasswordResDto vendorForgotPasswordResDto = vendorService.validateOtp(vendorValidateOtpReqDto);
     return  new ResponseEntity(vendorForgotPasswordResDto,HttpStatus.OK);
     }
 
-    @PutMapping(value = "/UpdatePassword")
-    public  ResponseEntity UpdatePasseord(@RequestBody UpdatePassword updatePassword){
-        Boolean flag = vendorService.UpdatePassword(updatePassword);
-        return  new ResponseEntity(flag,HttpStatus.OK);
+    @PutMapping(value = "/vendor/vendorUpatePassword")
+    public ResponseEntity vendorUpdatePassword(@RequestBody VendorUpdatePasswordReqDto vendorUpdatePasswordReqDto){
+        Boolean flag = vendorService.vendorUpdatePassword(vendorUpdatePasswordReqDto);
+        return new ResponseEntity(flag,HttpStatus.OK);
     }
 
 }
+
 
 
 

@@ -14,7 +14,7 @@ public class Vendor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer vendorId;
     @Column(length = 20)
     private String vendorFirstName;
     @Column(length = 20)
@@ -45,7 +45,7 @@ public class Vendor {
     @Column(length = 100)
     private String amountBalance;
     @Column(length = 8)
-    private Integer Otp;
+    private Integer otp;
 
     private String photo;
 

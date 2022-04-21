@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
@@ -45,7 +46,7 @@ public class VendorServiceImpl implements VendorService {
     @Override
     public Boolean upadte(VendorDto vendorDto) {
         Vendor vendor = new Vendor();
-        vendor.setId(vendor.getId());
+        vendor.setVendorId(vendorDto.getVendorId());
         BeanUtils.copyProperties(vendorDto, vendor);
         try {
             vendorDao.save(vendor);
@@ -83,7 +84,7 @@ public class VendorServiceImpl implements VendorService {
     @Override
     public VendorLoginResDto vendorLogin(VendorLoginReqDto vendorLoginReqDto) {
         VendorLoginResDto vendorLoginResDto = new VendorLoginResDto();
-        Vendor vendor = vendorDao.findByMoblieNoOrEmailId(vendorLoginReqDto.getUserName(), vendorLoginReqDto.getUserName());
+        Vendor vendor = vendorDao.findByVendorMoblieNoOrVendorEmail(vendorLoginReqDto.getUserName(), vendorLoginReqDto.getUserName());
         if (vendor == null) {
             vendorLoginResDto.setMessage("Message Number or Email not exists");
             vendorLoginResDto.setResponseCode(HttpStatus.BAD_REQUEST.value());
@@ -121,7 +122,7 @@ public class VendorServiceImpl implements VendorService {
 
     @Override
     public VendorResDto checkMoblieNo(String mobileNo) {
-        Vendor vendor = vendorDao.findByMoblieNo(mobileNo);
+        Vendor vendor = vendorDao.findByVendorMoblieNo(mobileNo);
         VendorResDto vendorResDto = new VendorResDto();
 
         if (vendor == null) {
@@ -137,12 +138,12 @@ public class VendorServiceImpl implements VendorService {
 
     @Override
     public VendorForgotPasswordResDto forgotPassword(VendorForgotPasswordReqDto vendorForgotPasswordReqDto) throws NoSuchAlgorithmException, IOException, KeyManagementException {
-        Vendor vendor = vendorDao.findByMoblieNo(vendorForgotPasswordReqDto.getMobileNo());
+        Vendor vendor = vendorDao.findByVendorMoblieNo(vendorForgotPasswordReqDto.getMobileNo());
         if (vendor != null) {
             Integer otp = RandomNumberGenerator.getNumber();
             System.out.println("otp" + otp);
 
-            Integer flag = vendorDao.updateOtp(vendor.getId(), otp);
+            Integer flag = vendorDao.updateOtp(vendor.getVendorId(), otp);
 
             System.out.println("flag" + flag);
 
@@ -151,7 +152,7 @@ public class VendorServiceImpl implements VendorService {
             String sms = "verification OTP code " + otp;
             SmsPanel.sendSms(vendor.getVendorMoblieNo(), sms);
             vendorForgotPasswordResDto.setFlag(true);
-            vendorForgotPasswordResDto.setVendorId(vendor.getId());
+            vendorForgotPasswordResDto.setVendorId(vendor.getVendorId());
             return vendorForgotPasswordResDto;
 
         } else {
@@ -176,25 +177,24 @@ public class VendorServiceImpl implements VendorService {
 
         if (vendorValidateOtpReqDto.getOtp().equals(vendor.getOtp())) {
             vendorForgotPasswordResDto.setFlag(true);
-            vendorForgotPasswordResDto.setVendorId(vendor.getId());
+            vendorForgotPasswordResDto.setVendorId(vendor.getVendorId());
             return vendorForgotPasswordResDto;
         } else {
             vendorForgotPasswordResDto.setFlag(false);
-            vendorForgotPasswordResDto.setVendorId(vendor.getId());
+            vendorForgotPasswordResDto.setVendorId(vendor.getVendorId());
             return vendorForgotPasswordResDto;
         }
     }
 
-
     @Override
-    public Boolean UpdatePassword(UpdatePassword updatePassword) {
-        Integer vendorId = vendorDao.VendorUpdatePassword(updatePassword.getVendorId(), updatePassword.getPassword());
-        if (vendorId == null) {
+    public Boolean vendorUpdatePassword(VendorUpdatePasswordReqDto vendorUpdatePasswordReqDto) {
+        Integer vendorId = vendorDao.VendorUpdatePassword(vendorUpdatePasswordReqDto.getVendorId(), vendorUpdatePasswordReqDto.getVendorPassword());
+
+        if(vendorId==null) {
             return false;
-        } else {
+        }else {
             return true;
         }
 
     }
-
 }

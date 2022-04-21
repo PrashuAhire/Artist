@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class VendorValidateOtpReqDto {
 
-    private  Integer VendorId;
+    private  Integer vendorId;
 
     private Integer otp;
 

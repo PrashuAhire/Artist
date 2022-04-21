@@ -18,21 +18,22 @@ public interface VendorDao extends JpaRepository<Vendor,Integer> {
 
     Object findAllByVendorStatus(String active);
 
-    AdminMaster findByMobileNoOrEmailId(String userName, String userName1);
+    Vendor findByVendorMoblieNoOrVendorEmail(String userName, String userName1);
 
-    Vendor findByMoblieNoOrEmailId(String Username, String userName1);
-
-    Vendor findByMoblieNo(String mobileNo);
-
-   // Vendor findByVendorId(Integer vendorId);
+    Vendor findByVendorMoblieNo(String mobileNo);
 
      @Transactional
      @Modifying
      @Query("update Vendor as am set am.otp=:otp where am.vendorId=:vendorId ")
     Integer updateOtp(@Param("vendorId") Integer vendorId, @Param("otp") Integer otp);
 
-    Integer VendorUpdatePassword(@Param("vendorId")Integer vendorId,@Param("password")String Password);
+     @Transactional
+     @Modifying
+     @Query("update Vendor as am set am.vendorPassword=:vendorPassword where am.vendorId=:vendorId")
+    Integer VendorUpdatePassword(@Param("vendorId")Integer vendorId,@Param("vendorPassword")String vendorPassword);
 
 
    Optional<Vendor> findByVendorId(Integer vendorId);
+
+
 }

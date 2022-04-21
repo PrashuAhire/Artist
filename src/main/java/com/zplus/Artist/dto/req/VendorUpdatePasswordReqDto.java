@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class VenodrUpdatePassword {
+public class VendorUpdatePasswordReqDto {
 
     private Integer vendorId;
-    private String password;
+    private String vendorPassword;
 }

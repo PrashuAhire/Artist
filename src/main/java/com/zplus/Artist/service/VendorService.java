@@ -35,6 +35,7 @@ public interface VendorService {
      VendorForgotPasswordResDto validateOtp(VendorValidateOtpReqDto vendorValidateOtpReqDto );
 
 
-     Boolean UpdatePassword(UpdatePassword updatePassword);
+   Boolean vendorUpdatePassword(VendorUpdatePasswordReqDto vendorUpdatePasswordReqDto);
+
 
 }

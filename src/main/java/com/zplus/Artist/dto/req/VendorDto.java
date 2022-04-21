@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class VendorDto {
 
-    private Integer id;
+    private Integer vendorId;
     private String vendorFirstName;
     private String vendorMiddleName;
     private String vendorLastName;
