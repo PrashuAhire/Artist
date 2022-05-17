@@ -62,16 +62,8 @@
             <version>8.0.25</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports</artifactId>
-            <version>6.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.jasperreports</groupId>
-            <artifactId>jasperreports-fonts</artifactId>
-            <version>6.0.0</version>
-        </dependency>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
@@ -107,7 +99,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.16</version>
+            <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -188,8 +180,5 @@
             </plugin>
         </plugins>
     </build>
-
-
-
 
 </project>
